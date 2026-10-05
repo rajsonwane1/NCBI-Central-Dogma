@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Central Dogma | NCBI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a class="logo" href="/">Central Dogma</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Central Dogma</h1>
+        </section>
+
+        <section class="box input-box">
+            <div class="tabs">
+                <button class="tab active" data-mode="accession">NCBI accession</button>
+                <button class="tab" data-mode="sequence">DNA sequence</button>
+            </div>
+
+            <div id="accessionMode">
+                <label for="accession">Accession number</label>
+                <div class="input-row">
+                    <input id="accession" type="text" placeholder="Enter accession number">
+                    <button class="primary" id="analyzeAccession">Analyze</button>
+                </div>
+            </div>
+
+            <div id="sequenceMode" class="hidden">
+                <label for="sequence">DNA sequence</label>
+                <textarea id="sequence" rows="7" placeholder="Paste DNA sequence"></textarea>
+
+                <div class="sequence-controls">
+                    <div>
+                        <label for="frame">Reading frame</label>
+                        <select id="frame">
+                            <option value="1">+1</option>
+                            <option value="2">+2</option>
+                            <option value="3">+3</option>
+                        </select>
+                    </div>
+                    <button class="primary" id="analyzeSequence">Translate</button>
+                </div>
+            </div>
+
+            <p id="status" class="status"></p>
+        </section>
+
+        <section id="results" class="hidden">
+            <div class="result-top">
+                <div>
+                    <p class="label">RESULT</p>
+                    <h2 id="title"></h2>
+                    <p id="definition" class="definition"></p>
+                </div>
+                <a id="ncbiLink" class="ncbi-link" target="_blank">View NCBI ↗</a>
+            </div>
+
+            <div class="summary">
+                <div>
+                    <span>Organism</span>
+                    <strong id="organism"></strong>
+                </div>
+                <div>
+                    <span>Length</span>
+                    <strong id="length"></strong>
+                </div>
+                <div>
+                    <span>Molecule</span>
+                    <strong id="molecule"></strong>
+                </div>
+                <div>
+                    <span>Protein</span>
+                    <strong id="proteinLength"></strong>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-heading">
+                    <div>
+                        <h3>Central dogma</h3>
+                        <p id="translationSource"></p>
+                    </div>
+                </div>
+
+                <div class="sequence-list">
+                    <div class="sequence-block">
+                        <div class="sequence-heading">
+                            <span>DNA</span>
+                            <small id="dnaMeta"></small>
+                        </div>
+                        <pre id="dna"></pre>
+                    </div>
+
+                    <div class="direction">→</div>
+
+                    <div class="sequence-block">
+                        <div class="sequence-heading">
+                            <span>RNA</span>
+                        </div>
+                        <pre id="rna"></pre>
+                    </div>
+
+                    <div class="direction">→</div>
+
+                    <div class="sequence-block">
+                        <div class="sequence-heading">
+                            <span>PROTEIN</span>
+                            <small id="proteinMeta"></small>
+                        </div>
+                        <pre id="protein"></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Annotation</h3>
+                <div class="annotation">
+                    <div>
+                        <span>Protein accession</span>
+                        <strong id="proteinId"></strong>
+                    </div>
+                    <div>
+                        <span>Gene</span>
+                        <strong id="gene"></strong>
+                    </div>
+                    <div>
+                        <span>CDS location</span>
+                        <strong id="cdsLocation"></strong>
+                    </div>
+                    <div>
+                        <span>Protein Product</span>
+                        <strong id="function"></strong>
+                    </div>
+                </div>
+            </div>
+
+           
+        </section>
+    </main>
+
+    <footer>
+        <p>Built by Raj Sonwane and Gaurav Dandire.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
